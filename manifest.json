@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "Price Spy",
+    "version": "1.0",
+    "permissions": [
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["https://panini.com.br/*"],
+            "js": ["panini.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://www.mercadolivre.com.br/*",
+                "https://lista.mercadolivre.com.br/*"
+            ],
+            "js": ["mercado_livre.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://www.amazon.com.br/*"],
+            "js": ["amazon.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://shopee.com.br/*"],
+            "js": ["shopee.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_popup": "popup/index.html",
+        "default_icon": {"48": "icons/spy.svg"}
+    }
+}
