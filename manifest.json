@@ -8,7 +8,7 @@
     "content_scripts": [
         {
             "matches": ["https://panini.com.br/*"],
-            "js": ["util.js", "panini.js"],
+            "js": ["util.js", "caretakers/panini.js"],
             "run_at": "document_idle"
         },
         {
@@ -16,17 +16,17 @@
                 "https://www.mercadolivre.com.br/*",
                 "https://lista.mercadolivre.com.br/*"
             ],
-            "js": ["util.js", "mercado_livre.js"],
+            "js": ["util.js", "caretakers/mercado_livre.js"],
             "run_at": "document_idle"
         },
         {
             "matches": ["https://www.amazon.com.br/*"],
-            "js": ["util.js", "amazon.js"],
+            "js": ["util.js", "caretakers/amazon.js"],
             "run_at": "document_idle"
         },
         {
             "matches": ["https://shopee.com.br/*"],
-            "js": ["util.js", "shopee.js"],
+            "js": ["util.js", "caretakers/shopee.js"],
             "run_at": "document_idle"
         }
     ],

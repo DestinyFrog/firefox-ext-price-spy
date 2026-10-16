@@ -5,6 +5,7 @@ function get_image(card) {
     return {
         srcset: image.getAttribute('srcset'),
         src: image.getAttribute('src'),
+        alt: image.getAttribute('alt'),
     }
 }
 

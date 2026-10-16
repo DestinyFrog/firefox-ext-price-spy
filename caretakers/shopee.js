@@ -5,6 +5,7 @@ function get_image(card) {
     return {
         srcset: image.getAttribute('srcset'),
         src: image.getAttribute('src'),
+        alt: image.getAttribute('alt'),
     }
 }
 
@@ -51,7 +52,6 @@ async function save_data(term, time, products) {
     else
         data['products'] = products
 
-    log(data)
     await browser.storage.local.set({ shopee: data })
 }
 
@@ -62,7 +62,6 @@ async function init() {
 
     await wait_for_element('ul.shopee-search-item-result__items > li')
 
-    try {
     const time = format_date_time()
     const products = {}
     const div_products = document.querySelectorAll('ul.shopee-search-item-result__items > li')
@@ -72,13 +71,8 @@ async function init() {
             products[product.link] = { ...product, time }
     })
 
-    log("before save")
     await save_data(term, time, products)
-    log("after save")
     log(`${Object.values(products).length} new items`)
-    } catch (err) {
-        log(err)
-    }
 }
 
 boot(init)

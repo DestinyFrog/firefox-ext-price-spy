@@ -1,4 +1,14 @@
 
+function get_image(card) {
+    const image = card.querySelector('img.poly-component__picture')
+    if (!image) return null
+    return {
+        srcset: image.getAttribute('srcset'),
+        src: image.getAttribute('src'),
+        alt: image.getAttribute('alt'),
+    }
+}
+
 function get_name(card) {
     const a = card.querySelector('h3.poly-component__title-wrapper a.poly-component__title')
     if (!a) return null
@@ -11,15 +21,6 @@ function get_link(card) {
     return a.getAttribute('href') || null
 }
 
-function get_image(card) {
-    const image = card.querySelector('img.poly-component__picture')
-    if (!image) return null
-    return {
-        srcset: image.getAttribute('srcset'),
-        src: image.getAttribute('src'),
-    }
-}
-
 function get_price(card) {
     const str_price = card.querySelector('div.poly-price__current span.andes-money-amount')?.getAttribute('aria-label')
     if (!str_price) return null
@@ -29,8 +30,8 @@ function get_price(card) {
 }
 
 function get_extra(card) {
-    const seller = card.querySelector('.poly-component__seller')?.innerText
-    const review = card.querySelector('.poly-component__review-compacted')?.innerText
+    const seller = card.querySelector('.poly-component__seller')?.innerText || null
+    const review = card.querySelector('.poly-component__review-compacted')?.innerText || null
     const tags = [
         ... card.querySelectorAll('.poly-rebates__pill'),
         ... card.querySelectorAll('.poly-shipping-v2__item'),

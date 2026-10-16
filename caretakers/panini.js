@@ -1,19 +1,20 @@
 
-function get_link(card) {
-    return card.querySelector('a.product-item-link').href
-}
-
-function get_name(card) {
-    return card.querySelector('a.product-item-link').textContent
-}
-
 function get_image(card) {
     const image = card.querySelector('img.product-image-photo')
     if (!image) return null
     return {
         srcset: image.getAttribute('srcset'),
         src: image.getAttribute('src'),
+        alt: image.getAttribute('alt'),
     }
+}
+
+function get_name(card) {
+    return card.querySelector('a.product-item-link').textContent
+}
+
+function get_link(card) {
+    return card.querySelector('a.product-item-link').href
 }
 
 function get_price(card) {
